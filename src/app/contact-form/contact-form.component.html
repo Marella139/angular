@@ -1,0 +1,62 @@
+<section class="probootstrap-section">
+  <div class="container">
+    <div class="row">
+      <div>
+        <h2>Kontaktirajte nas</h2>
+        <p>Dodjite do nas ili nas kontakirajte. Ocekujemo Vas!</p>    
+      </div>
+    </div>
+    <div class="row" [@slide]="transition">
+      <div>
+        <form #f="ngForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                  <input required minlength="3" ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" type="text" class="form-control" placeholder="Ime">
+                <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+                  <div *ngIf="firstName.errors.required">Polje ime je obavezno!</div>
+                  <div *ngIf="firstName.errors.minlength">Najmanje {{ firstName.errors.minlength.requiredLength }} karaktera</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input required minlength="3" ngModel name="lastName" #lastName="ngModel" (change)="log(lastName)" type="text" class="form-control" placeholder="Prezime">
+                <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
+                  <div *ngIf="lastName.errors.required">Polje prezime je obavezno!</div>
+                  <div *ngIf="lastName.errors.minlength">Najmanje {{ lastName.errors.minlength.requiredLength }} karaktera</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" required email ngModel name="email" #email="ngModel" (change)="log(email)" class="form-control" placeholder="Email">
+            <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+                <div *ngIf="email.errors.required">Polje email je obavezno!</div>
+                <div *ngIf="email.errors.email">Email nije u dobrom formatu!</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea required ngModel name="comment" id="message" cols="30" rows="7" class="form-control" placeholder="Poruka"></textarea>
+          </div>
+          <div class="form-group">
+            <button (click)="onSave($event)" [disabled]="!f.valid" class="btn btn-primary btn-send-message">Posalji</button>
+          </div>
+        </form>
+       
+      
+      </div>
+      <div [@scrollAnimation]="state">
+        <h4>Kontakt</h4>
+        <ul class="with-icon colored">
+          <li><i class="{{kontakt_ikonica}}"></i> <span>{{ kontakt_info }}</span></li>
+          <li><i class="{{mail_ikonica}}"></i><span>{{ mail_info }}</span></li>
+          <li><i class="{{telefon_ikonica}}"></i><span>{{ telefon_info }}</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>  
+<div>
+  <div id="map"></div>
+</div>
